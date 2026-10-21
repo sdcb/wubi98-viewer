@@ -1,0 +1,100 @@
+@import 'tailwindcss';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: 'Inter', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei UI', 'Microsoft YaHei', system-ui, sans-serif;
+  --font-serif: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', 'STSong', 'SimSun', serif;
+  --font-kai: 'LXGW WenKai', 'Kaiti SC', 'STKaiti', 'KaiTi', 'Noto Serif SC', serif;
+  --font-mono: 'JetBrains Mono', 'Cascadia Code', 'SF Mono', Consolas, monospace;
+
+  --color-paper: #f7f3ea;
+  --color-paper-2: #efe8d9;
+  --color-ink: #23201c;
+  --color-ink-2: #5d564c;
+  --color-cinnabar: #c0392b;
+}
+
+:root {
+  --root-0: #e0475b;
+  --root-1: #e08a1e;
+  --root-2: #1f9d6b;
+  --root-3: #2f6fdc;
+  --root-4: #8b5cf6;
+  --stroke-idle: #2a2622;
+  --stroke-uncovered: #c9c1b3;
+  --grid: #d9a99c;
+  color-scheme: light;
+}
+
+.dark {
+  --root-0: #ff7a8a;
+  --root-1: #ffb454;
+  --root-2: #4fd6a0;
+  --root-3: #6ea8ff;
+  --root-4: #b79bff;
+  --stroke-idle: #ece6da;
+  --stroke-uncovered: #4a4540;
+  --grid: #6b3f37;
+  color-scheme: dark;
+}
+
+html {
+  @apply bg-paper text-ink antialiased;
+  font-family: var(--font-sans);
+}
+
+html.dark {
+  @apply bg-[#151311] text-[#ece6da];
+}
+
+body {
+  background-image:
+    radial-gradient(circle at 15% 0%, rgba(192, 57, 43, 0.07), transparent 40%),
+    radial-gradient(circle at 90% 10%, rgba(47, 111, 220, 0.06), transparent 35%);
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+.dark body {
+  background-image:
+    radial-gradient(circle at 15% 0%, rgba(255, 122, 138, 0.08), transparent 40%),
+    radial-gradient(circle at 90% 10%, rgba(110, 168, 255, 0.07), transparent 35%);
+}
+
+.card {
+  @apply rounded-3xl border border-black/5 bg-white/70 shadow-[0_1px_2px_rgba(0,0,0,0.04),0_8px_30px_rgba(60,40,20,0.06)] backdrop-blur-sm dark:border-white/8 dark:bg-white/[0.04] dark:shadow-none;
+}
+
+.keycap {
+  @apply inline-flex items-center justify-center rounded-lg border border-b-[3px] font-mono font-semibold uppercase leading-none;
+}
+
+.btn {
+  @apply inline-flex cursor-pointer items-center gap-1 rounded-full border border-black/10 bg-white/70 px-3.5 py-1.5 text-ink-2 transition hover:border-cinnabar/50 hover:text-cinnabar active:scale-95 dark:border-white/15 dark:bg-white/5 dark:text-white/70 dark:hover:text-[#ff8a7a];
+}
+
+.stroke-anim {
+  transition:
+    fill 0.25s ease,
+    opacity 0.25s ease;
+}
+
+@keyframes pop-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.pop-in {
+  animation: pop-in 0.35s ease both;
+}
+
+::selection {
+  background: rgba(192, 57, 43, 0.2);
+}

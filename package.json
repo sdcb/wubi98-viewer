@@ -1,0 +1,33 @@
+{
+  "name": "wubi98-viewer",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "oxlint",
+    "preview": "wrangler pages dev dist",
+    "extract": "node scripts/extract-ms-lex.mjs",
+    "gen": "node scripts/gen-98.mjs",
+    "data": "node scripts/gen-98.mjs && node scripts/build-data.mjs"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.3.3",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "tailwindcss": "^4.3.3"
+  },
+  "devDependencies": {
+    "@types/node": "^24.13.3",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.7",
+    "@vitejs/plugin-react": "^6.1.1",
+    "opentype.js": "^2.0.0",
+    "oxlint": "^1.81.0",
+    "typescript": "~6.0.2",
+    "vite": "^8.3.0",
+    "wrangler": "^4.149.0"
+  },
+  "license": "AGPL-3.0-only"
+}
